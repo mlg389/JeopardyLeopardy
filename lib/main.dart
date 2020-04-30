@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'questionsPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -103,16 +104,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 'images/Title2.png',
               ),
             ),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Image.asset(
-                  'images/play.png',
+            GestureDetector(
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => QuestionsPage())),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Image.asset(
+                    'images/play.png',
+                  ),
                 ),
+                elevation: 5,
+                margin: EdgeInsets.all(10),
+                color: Colors.yellow,
               ),
-              elevation: 5,
-              margin: EdgeInsets.all(10),
-              color: Colors.yellow,
             ),
           ],
         ),
