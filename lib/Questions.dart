@@ -1,17 +1,28 @@
+import 'dart:math';
+
 class Questions {
-  String question;
-  var answers;
-  String correctAnswer;
+  var orderedAnswers = [];
 
-  String letter;
-  bool isCorrect;
+  List generateAnswers(var answers, String correctAnswer) {
+    var tempAnswers;
 
-  void generateAnswers(String question, var answers, String correctAnswer) {
-    this.question = question;
-    this.answers = answers;
-    this.correctAnswer = correctAnswer;
+    var letter = ["a", "b", "c", "d"];
+    int randomLetter = Random().nextInt(4);
 
-    // pass into AnswerButtonWidget
+    // TODO: answers[i] will cause a problem with the T/F questions
+    int i = 0;
+    while (i < 4) {
+      if (i != randomLetter) {
+        tempAnswers = [letter[i], answers[i], false];
+        this.orderedAnswers.add(tempAnswers);
+      } else {
+        tempAnswers = [letter[i], correctAnswer, true];
+        this.orderedAnswers.add(tempAnswers);
+      }
+    }
+
+    // list of lists as: letter, answer, T/F
+    return orderedAnswers;
   }
 
   void answerResponse() {
@@ -64,6 +75,7 @@ class BestPractices extends Questions {
 
   BestPractices(int difficulty) {
     // start choosing things based on difficulty
+    // call generateAnswers with that
   }
 }
 
@@ -160,6 +172,8 @@ class FlutterAppAnatomy extends Questions {
     "What is the outcome of the following call if the mobile app user denies permission access to its location?: .Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.low);":
         "he call will throw an exception."
   };
+
+  FlutterAppAnatomy(int difficulty) {}
 }
 
 class OOP extends Questions {
@@ -215,6 +229,11 @@ class OOP extends Questions {
     "Which relationship between classes is referred to as a \'has a\' relationship?":
         "aggregation"
   };
+
+  OOP(int difficulty) {
+    // start choosing things based on difficulty
+    // call generateAnswers with that
+  }
 }
 
 class MobileAppsHistory extends Questions {
@@ -242,6 +261,11 @@ class MobileAppsHistory extends Questions {
 
   // key = question, value = correct answer
   var correctAnswers = new Map();
+
+  MobileAppsHistory(int difficulty) {
+    // start choosing things based on difficulty
+    // call generateAnswers with that
+  }
 }
 
 class ASConfig extends Questions {
@@ -319,4 +343,9 @@ class ASConfig extends Questions {
     "This feature of the Android Studio helps breakdown a large project to smaller more manageable parts during implementation and coding.":
         "The //TODO: Comment"
   };
+
+  ASConfig(int difficulty) {
+    // start choosing things based on difficulty
+    // call generateAnswers with that
+  }
 }
