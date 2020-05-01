@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'dart:math';
 
 class Questions {
