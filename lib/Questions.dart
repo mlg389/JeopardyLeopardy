@@ -1,28 +1,17 @@
-import 'dart:math';
-
 class Questions {
-  var orderedAnswers = [];
+  String question;
+  var answers;
+  String correctAnswer;
 
-  List generateAnswers(var answers, String correctAnswer) {
-    var tempAnswers;
+  String letter;
+  bool isCorrect;
 
-    var letter = ["a", "b", "c", "d"];
-    int randomLetter = Random().nextInt(4);
+  void generateAnswers(String question, var answers, String correctAnswer) {
+    this.question = question;
+    this.answers = answers;
+    this.correctAnswer = correctAnswer;
 
-    // TODO: answers[i] will cause a problem with the T/F questions
-    int i = 0;
-    while (i < 4) {
-      if (i != randomLetter) {
-        tempAnswers = [letter[i], answers[i], false];
-        this.orderedAnswers.add(tempAnswers);
-      } else {
-        tempAnswers = [letter[i], correctAnswer, true];
-        this.orderedAnswers.add(tempAnswers);
-      }
-    }
-
-    // list of lists as: letter, answer, T/F
-    return orderedAnswers;
+    // pass into AnswerButtonWidget
   }
 
   void answerResponse() {
@@ -38,29 +27,59 @@ class BestPractices extends Questions {
     "An iOS mobile application developed using Flutter and tested using Android Emulator is ready to be deployed to App Store."
   ];
   var diff2Questions = [
-    "This  is used to demonstrate/confirm a package can be incorporated in a Flutter/Dart application and  the package behaves as expected."
+    "This  is used to demonstrate/confirm a package can be incorporated in a Flutter/Dart application and  the package behaves as expected.",
+    "Why should widgets be reused?"
   ];
   var diff3Questions = [
-    "To keep your mobile application code modular every custom widget implementation must be defined in its own Dart file."
+    "To keep your mobile application code modular every custom widget implementation must be defined in its own Dart file.",
+    "What would be the best way of designing a bunch of buttons in a similar way in an application with differently designed buttons?"
   ];
-  var diff4Questions = new List(2);
-  var diff5Questions = new List(2);
+  var diff4Questions = [
+    "Why do we want to keep the build() method as simple as possible?",
+    "Why do we want to avoid constructors with concrete Lists of children?"
+  ];
+  var diff5Questions = [
+    "What is a lazy render method?",
+    "Why do we want to use AnimatedOpacity or FadeInImage instead of Opacity?"
+  ];
 
   // list wrong answers for the questions
   var diff1Answers = ["True"];
   var diff1Answers2 = ["True"];
 
   var diff2Answers = ["Prototyping", "Unit Testing", "Simulation"];
-  var diff2Answers2 = [];
+  var diff2Answers2 = ["Reusable widgets save time coding.",
+    "Reusable widgets save memory and storage space.",
+    "Reusable widgets make the application run faster."];
 
   var diff3Answers = ["False"];
-  var diff3Answers2 = [];
+  var diff3Answers2 = [
+    "Adding design to each individual button.",
+    "Creating a button class for all buttons.",
+    "Using ThemeData to define a button theme."];
 
-  var diff4Answers = [];
-  var diff4Answers2 = [];
+  var diff4Answers = [
+    "The build method will clutter up the screen with objects.",
+    "The build method has a limited amount of allocated memory, exceeding this will cause and error.",
+    "The build method can crash the program by doing too much at once, code should be distributed amongst other methods."
+  ];
+  var diff4Answers2 = [
+    "The constructor will be pulled up and visible on screen, even when it should not be.",
+    "The constructor will constantly call and render the objects from the list when it should not.",
+    "The constructor will not render concrete Lists of children."
+  ];
 
-  var diff5Answers = [];
-  var diff5Answers2 = [];
+  var diff5Answers = [
+    "A method that renders objects individually, one at a time.",
+    "A method that pulls objects from a list to render.",
+    "A method that only works for a specific object and does not care about other objects."
+
+  ];
+  var diff5Answers2 = [
+    "Opacity does not work for animations.",
+    "Opacity is not able to draw images.",
+    "Opacity does not have the ability to change its visibilty or transform into a child widget."
+  ];
 
   var correctAnswers = {
     "Constraint based UI design is ideal for creation of flexible UI layouts for small and large screen sizes.":
@@ -70,12 +89,23 @@ class BestPractices extends Questions {
     "This  is used to demonstrate/confirm a package can be incorporated in a Flutter/Dart application and  the package behaves as expected.":
         "Proof of concept",
     "To keep your mobile application code modular every custom widget implementation must be defined in its own Dart file.":
-        "True"
+        "True",
+    "Why should widgets be reused?":
+        "All of these answers are correct.",
+    "What would be the best way of designing a bunch of buttons in a similar way in an application with differently designed buttons?":
+      "Using ThemeData to define a button theme.",
+    "Why do we want to keep the build() method as simple as possible?":
+        "The build method is called frequently, anc can slow down the application if it is too cluttered.",
+    "What is a lazy render method?":
+        "A method that only renders the visible part of an object to save memory.",
+    "Why do we want to use AnimatedOpacity or FadeInImage instead of Opacity?":
+        "Opacity rebuilds on each frame, causing application slowness.",
+    "Why do we want to avoid constructors with concrete Lists of children?":
+        "The constructors build cost will be significantly higher than needed."
   };
 
   BestPractices(int difficulty) {
     // start choosing things based on difficulty
-    // call generateAnswers with that
   }
 }
 
@@ -172,8 +202,6 @@ class FlutterAppAnatomy extends Questions {
     "What is the outcome of the following call if the mobile app user denies permission access to its location?: .Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.low);":
         "he call will throw an exception."
   };
-
-  FlutterAppAnatomy(int difficulty) {}
 }
 
 class OOP extends Questions {
@@ -182,16 +210,20 @@ class OOP extends Questions {
     "Which relationship is a good candidate for superclass and subclass?"
   ];
   var diff2Questions = [
-    "Which concept of object-oriented programming is displayed by breaking a large system to smaller components where each component has a  defined role?"
+    "Which concept of object-oriented programming is displayed by breaking a large system to smaller components where each component has a  defined role?",
+    "Which relationship best represents black-box coding?"
   ];
   var diff3Questions = [
-    "Which concept of object-oriented programming is displayed when operations on the instances of a class take different forms based on the specific subclass of the instance."
+    "Which concept of object-oriented programming is displayed when operations on the instances of a class take different forms based on the specific subclass of the instance.",
+    "Which relationship best represents the relationship between a building and a house?"
   ];
   var diff4Questions = [
-    "Which concept of object-oriented programming is displayed by building boundaries around components such that internal details of the components are hidden from other components."
+    "Which concept of object-oriented programming is displayed by building boundaries around components such that internal details of the components are hidden from other components.",
+    "Which relationship best shows the relationship between a car and a tire?"
   ];
   var diff5Questions = [
-    "Which relationship between classes is referred to as a \'has a\' relationship?"
+    "Which relationship between classes is referred to as a \'has a\' relationship?",
+    "Which relationship shows best how an omnivore may be represented as both a meat and vegetable eater?"
   ];
 
   // list wrong answers for the questions
@@ -203,16 +235,16 @@ class OOP extends Questions {
   ];
 
   var diff2Answers = ["polymorphism", "encapsulation", "inheritance"];
-  var diff2Answers2 = [];
+  var diff2Answers2 = ["polymorphism", "encapsulation", "inheritance"];
 
   var diff3Answers = ["encapsulation", "inheritance", "abstraction"];
-  var diff3Answers2 = [];
+  var diff3Answers2 = ["abstraction", "polymorphism", "encapsulation"];
 
   var diff4Answers = ["polymorphism", "inheritance", "abstraction"];
-  var diff4Answers2 = [];
+  var diff4Answers2 = ["many-to-many", "inheritance", "one-to-many"];
 
   var diff5Answers = ["many-to-many", "inheritance", "one-to-many"];
-  var diff5Answers2 = [];
+  var diff5Answers2 = ["encapsulation", "inheritance", "abstraction"];
 
   // key = question, value = correct answer
   var correctAnswers = {
@@ -227,24 +259,33 @@ class OOP extends Questions {
     "Which concept of object-oriented programming is displayed by building boundaries around components such that internal details of the components are hidden from other components.":
         "encapsulation",
     "Which relationship between classes is referred to as a \'has a\' relationship?":
-        "aggregation"
-  };
+        "aggregation",
+    "Which relationship best shows the relationship between a car and a tire?":
+        "aggregation",
+    "Which relationship best represents the relationship between a building and a house?":
+        "inheritance",
+    "Which relationship shows best how an omnivore may be represented as both a meat and vegetable eater?":
+        "polymorphism",
+    "Which relationship best represents black-box coding?":
+        "abstraction"
 
-  OOP(int difficulty) {
-    // start choosing things based on difficulty
-    // call generateAnswers with that
-  }
+
+  };
 }
 
 class MobileAppsHistory extends Questions {
-  var diff1Questions = new List(2);
+  var diff1Questions = [
+    "Which device used mobile applications first?"
+  ];
   var diff2Questions = new List(2);
   var diff3Questions = new List(2);
   var diff4Questions = new List(2);
   var diff5Questions = new List(2);
 
   // list wrong answers for the questions
-  var diff1Answers = new List(8);
+  var diff1Answers = [
+    "Phones", "Pagers", "TVs"
+  ];
   var diff1Answers2 = new List(8);
 
   var diff2Answers = new List(8);
@@ -260,12 +301,10 @@ class MobileAppsHistory extends Questions {
   var diff5Answers2 = new List(8);
 
   // key = question, value = correct answer
-  var correctAnswers = new Map();
-
-  MobileAppsHistory(int difficulty) {
-    // start choosing things based on difficulty
-    // call generateAnswers with that
-  }
+  var correctAnswers = {
+    "Which device used mobile applications first?":
+        "PDAs"
+  };
 }
 
 class ASConfig extends Questions {
@@ -279,6 +318,7 @@ class ASConfig extends Questions {
   ];
   var diff3Questions = [
     "This Android Studio platform feature  allows to automatically wrap a Flutter widget around another widget in Dart code."
+    "What can you use to simulate a flutter project?"
   ];
   var diff4Questions = [
     "Which of the followings is a way to include app icons for iOS and Adroid mobile applications for a Flutter project in Android Studio."
@@ -343,9 +383,4 @@ class ASConfig extends Questions {
     "This feature of the Android Studio helps breakdown a large project to smaller more manageable parts during implementation and coding.":
         "The //TODO: Comment"
   };
-
-  ASConfig(int difficulty) {
-    // start choosing things based on difficulty
-    // call generateAnswers with that
-  }
 }
