@@ -1,63 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:jeopardy_leopardy/answerWidget.dart';
 import 'Questions.dart';
+import 'TopicsWidget.dart';
 
-class AnswersPage extends StatefulWidget {
+class AnswersPage extends StatelessWidget {
   final int difficulty;
   final String topic;
   AnswersPage({@required this.difficulty, this.topic});
 
   @override
-  _AnswersPageState createState() => _AnswersPageState();
-}
-
-class _AnswersPageState extends State<AnswersPage> {
-  @override
   Widget build(BuildContext context) {
-    // if this topic, call that topic class with the difficulty
-    switch (widget.topic) {
-      case "Best Practices":
-        {
-          // var or BestPractices type?
-          BestPractices obj = new BestPractices(widget.difficulty);
-          // TODO: do a thing with the list of lists, maybe can call custom widget with?
-          obj.orderedAnswersHere[0][0]; // first answer set letter
-        }
-        break;
-
-      case "Flutter App Anatomy":
-        {
-          FlutterAppAnatomy(widget.difficulty);
-        }
-        break;
-
-      case "O.O.P.":
-        {
-          OOP(widget.difficulty);
-        }
-        break;
-
-      case "Server Usage Configuration":
-        {
-          ServerUsageConfiguration(widget.difficulty);
-        }
-        break;
-
-      case "A.S. Config":
-        {
-          ASConfig(widget.difficulty);
-        }
-        break;
-    }
-
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: Text(widget.topic),
+        title: Text(topic),
       ),
       backgroundColor: Colors.blueAccent,
-      body: Column(
-        children: <Widget>[],
-      ),
-    ));
+      body: buildWidgets(),
+    );
+  }
+
+  Questions getQuestion() {
+    if (this.topic == 'Best Practices') {
+      Questions q = new BestPractices(this.difficulty);
+      return q;
+    }
+    if (this.topic == 'Flutter App Anatomy') {
+      Questions q = new FlutterAppAnatomy(this.difficulty);
+      return q;
+    }
+    if (this.topic == 'Mobile Apps History') {
+      Questions q = new MobileAppsHistory(this.difficulty);
+      return q;
+    }
+    if (this.topic == 'O.O.P.') {
+      Questions q = new OOP(this.difficulty);
+      return q;
+    }
+    if (this.topic == 'A.S. Config') {
+      Questions q = new ASConfig(this.difficulty);
+      return q;
+    }
+  }
+
+  Column buildWidgets() {
+    Questions question = getQuestion();
+    List<Widget> list = new List<Widget>();
+    list.add(new TopicsWidget(topic: getQuestion().question, fontSize: 20));
+
+    for (var i = 0; i < question.answers.length; i++) {
+      list.add(new AnswerWidget(answer: question.answers[i]));
+    }
+    return new Column(children: list);
   }
 }
