@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class Questions {
   String question;
   var answers;
@@ -48,15 +50,18 @@ class BestPractices extends Questions {
   var diff1Answers2 = ["True"];
 
   var diff2Answers = ["Prototyping", "Unit Testing", "Simulation"];
-  var diff2Answers2 = ["Reusable widgets save time coding.",
+  var diff2Answers2 = [
+    "Reusable widgets save time coding.",
     "Reusable widgets save memory and storage space.",
-    "Reusable widgets make the application run faster."];
+    "Reusable widgets make the application run faster."
+  ];
 
   var diff3Answers = ["False"];
   var diff3Answers2 = [
     "Adding design to each individual button.",
     "Creating a button class for all buttons.",
-    "Using ThemeData to define a button theme."];
+    "Using ThemeData to define a button theme."
+  ];
 
   var diff4Answers = [
     "The build method will clutter up the screen with objects.",
@@ -73,7 +78,6 @@ class BestPractices extends Questions {
     "A method that renders objects individually, one at a time.",
     "A method that pulls objects from a list to render.",
     "A method that only works for a specific object and does not care about other objects."
-
   ];
   var diff5Answers2 = [
     "Opacity does not work for animations.",
@@ -90,10 +94,9 @@ class BestPractices extends Questions {
         "Proof of concept",
     "To keep your mobile application code modular every custom widget implementation must be defined in its own Dart file.":
         "True",
-    "Why should widgets be reused?":
-        "All of these answers are correct.",
+    "Why should widgets be reused?": "All of these answers are correct.",
     "What would be the best way of designing a bunch of buttons in a similar way in an application with differently designed buttons?":
-      "Using ThemeData to define a button theme.",
+        "Using ThemeData to define a button theme.",
     "Why do we want to keep the build() method as simple as possible?":
         "The build method is called frequently, anc can slow down the application if it is too cluttered.",
     "What is a lazy render method?":
@@ -105,7 +108,73 @@ class BestPractices extends Questions {
   };
 
   BestPractices(int difficulty) {
-    // start choosing things based on difficulty
+    var random = Random.secure();
+    var index;
+
+    print(difficulty);
+    switch (difficulty) {
+      case 100:
+        {
+          index = random.nextInt(diff1Questions.length);
+          this.question = diff1Questions[index];
+          if (index == 0) {
+            this.answers = diff1Answers;
+          } else {
+            this.answers = diff1Answers2;
+          }
+        }
+        break;
+
+      case 200:
+        {
+          index = random.nextInt(diff2Questions.length);
+          this.question = diff2Questions[index];
+          if (index == 0) {
+            this.answers = diff2Answers;
+          } else {
+            this.answers = diff2Answers2;
+          }
+        }
+        break;
+
+      case 300:
+        {
+          index = random.nextInt(diff3Questions.length);
+          this.question = diff3Questions[index];
+          if (index == 0) {
+            this.answers = diff3Answers;
+          } else {
+            this.answers = diff3Answers2;
+          }
+        }
+        break;
+
+      case 400:
+        {
+          index = random.nextInt(diff4Questions.length);
+          this.question = diff4Questions[index];
+          if (index == 0) {
+            this.answers = diff4Answers;
+          } else {
+            this.answers = diff4Answers2;
+          }
+        }
+        break;
+
+      case 500:
+        {
+          index = random.nextInt(diff5Questions.length);
+          this.question = diff5Questions[index];
+          if (index == 0) {
+            this.answers = diff5Answers;
+          } else {
+            this.answers = diff5Answers2;
+          }
+        }
+        break;
+    }
+    this.correctAnswer = correctAnswers[question];
+    this.answers.add(correctAnswer);
   }
 }
 
@@ -202,6 +271,76 @@ class FlutterAppAnatomy extends Questions {
     "What is the outcome of the following call if the mobile app user denies permission access to its location?: .Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.low);":
         "he call will throw an exception."
   };
+
+  FlutterAppAnatomy(int difficulty) {
+    var random = Random.secure();
+    var index;
+
+    print(difficulty);
+    switch (difficulty) {
+      case 100:
+        {
+          index = random.nextInt(diff1Questions.length);
+          this.question = diff1Questions[index];
+          if (index == 0) {
+            this.answers = diff1Answers;
+          } else {
+            this.answers = diff1Answers2;
+          }
+        }
+        break;
+
+      case 200:
+        {
+          index = random.nextInt(diff2Questions.length);
+          this.question = diff2Questions[index];
+          if (index == 0) {
+            this.answers = diff2Answers;
+          } else {
+            this.answers = diff2Answers2;
+          }
+        }
+        break;
+
+      case 300:
+        {
+          index = random.nextInt(diff3Questions.length);
+          this.question = diff3Questions[index];
+          if (index == 0) {
+            this.answers = diff3Answers;
+          } else {
+            this.answers = diff3Answers2;
+          }
+        }
+        break;
+
+      case 400:
+        {
+          index = random.nextInt(diff4Questions.length);
+          this.question = diff4Questions[index];
+          if (index == 0) {
+            this.answers = diff4Answers;
+          } else {
+            this.answers = diff4Answers2;
+          }
+        }
+        break;
+
+      case 500:
+        {
+          index = random.nextInt(diff5Questions.length);
+          this.question = diff5Questions[index];
+          if (index == 0) {
+            this.answers = diff5Answers;
+          } else {
+            this.answers = diff5Answers2;
+          }
+        }
+        break;
+    }
+    this.correctAnswer = correctAnswers[question];
+    this.answers.add(correctAnswer);
+  }
 }
 
 class OOP extends Questions {
@@ -266,26 +405,89 @@ class OOP extends Questions {
         "inheritance",
     "Which relationship shows best how an omnivore may be represented as both a meat and vegetable eater?":
         "polymorphism",
-    "Which relationship best represents black-box coding?":
-        "abstraction"
-
-
+    "Which relationship best represents black-box coding?": "abstraction"
   };
+
+  OOP(int difficulty) {
+    var random = Random.secure();
+    var index;
+
+    print(difficulty);
+    switch (difficulty) {
+      case 100:
+        {
+          index = random.nextInt(diff1Questions.length);
+          this.question = diff1Questions[index];
+          if (index == 0) {
+            this.answers = diff1Answers;
+          } else {
+            this.answers = diff1Answers2;
+          }
+        }
+        break;
+
+      case 200:
+        {
+          index = random.nextInt(diff2Questions.length);
+          this.question = diff2Questions[index];
+          if (index == 0) {
+            this.answers = diff2Answers;
+          } else {
+            this.answers = diff2Answers2;
+          }
+        }
+        break;
+
+      case 300:
+        {
+          index = random.nextInt(diff3Questions.length);
+          this.question = diff3Questions[index];
+          if (index == 0) {
+            this.answers = diff3Answers;
+          } else {
+            this.answers = diff3Answers2;
+          }
+        }
+        break;
+
+      case 400:
+        {
+          index = random.nextInt(diff4Questions.length);
+          this.question = diff4Questions[index];
+          if (index == 0) {
+            this.answers = diff4Answers;
+          } else {
+            this.answers = diff4Answers2;
+          }
+        }
+        break;
+
+      case 500:
+        {
+          index = random.nextInt(diff5Questions.length);
+          this.question = diff5Questions[index];
+          if (index == 0) {
+            this.answers = diff5Answers;
+          } else {
+            this.answers = diff5Answers2;
+          }
+        }
+        break;
+    }
+    this.correctAnswer = correctAnswers[question];
+    this.answers.add(correctAnswer);
+  }
 }
 
 class MobileAppsHistory extends Questions {
-  var diff1Questions = [
-    "Which device used mobile applications first?"
-  ];
+  var diff1Questions = ["Which device used mobile applications first?"];
   var diff2Questions = new List(2);
   var diff3Questions = new List(2);
   var diff4Questions = new List(2);
   var diff5Questions = new List(2);
 
   // list wrong answers for the questions
-  var diff1Answers = [
-    "Phones", "Pagers", "TVs"
-  ];
+  var diff1Answers = ["Phones", "Pagers", "TVs"];
   var diff1Answers2 = new List(8);
 
   var diff2Answers = new List(8);
@@ -301,10 +503,77 @@ class MobileAppsHistory extends Questions {
   var diff5Answers2 = new List(8);
 
   // key = question, value = correct answer
-  var correctAnswers = {
-    "Which device used mobile applications first?":
-        "PDAs"
-  };
+  var correctAnswers = {"Which device used mobile applications first?": "PDAs"};
+
+  MobileAppsHistory(int difficulty) {
+    var random = Random.secure();
+    var index;
+
+    print(difficulty);
+    switch (difficulty) {
+      case 100:
+        {
+          index = random.nextInt(diff1Questions.length);
+          this.question = diff1Questions[index];
+          if (index == 0) {
+            this.answers = diff1Answers;
+          } else {
+            this.answers = diff1Answers2;
+          }
+        }
+        break;
+
+      case 200:
+        {
+          index = random.nextInt(diff2Questions.length);
+          this.question = diff2Questions[index];
+          if (index == 0) {
+            this.answers = diff2Answers;
+          } else {
+            this.answers = diff2Answers2;
+          }
+        }
+        break;
+
+      case 300:
+        {
+          index = random.nextInt(diff3Questions.length);
+          this.question = diff3Questions[index];
+          if (index == 0) {
+            this.answers = diff3Answers;
+          } else {
+            this.answers = diff3Answers2;
+          }
+        }
+        break;
+
+      case 400:
+        {
+          index = random.nextInt(diff4Questions.length);
+          this.question = diff4Questions[index];
+          if (index == 0) {
+            this.answers = diff4Answers;
+          } else {
+            this.answers = diff4Answers2;
+          }
+        }
+        break;
+
+      case 500:
+        {
+          index = random.nextInt(diff5Questions.length);
+          this.question = diff5Questions[index];
+          if (index == 0) {
+            this.answers = diff5Answers;
+          } else {
+            this.answers = diff5Answers2;
+          }
+        }
+        break;
+    }
+    this.correctAnswer = correctAnswers[question];
+    this.answers.add(correctAnswer);
+  }
 }
 
 class ASConfig extends Questions {
@@ -318,7 +587,7 @@ class ASConfig extends Questions {
   ];
   var diff3Questions = [
     "This Android Studio platform feature  allows to automatically wrap a Flutter widget around another widget in Dart code."
-    "What can you use to simulate a flutter project?"
+        "What can you use to simulate a flutter project?"
   ];
   var diff4Questions = [
     "Which of the followings is a way to include app icons for iOS and Adroid mobile applications for a Flutter project in Android Studio."
@@ -383,4 +652,73 @@ class ASConfig extends Questions {
     "This feature of the Android Studio helps breakdown a large project to smaller more manageable parts during implementation and coding.":
         "The //TODO: Comment"
   };
+  ASConfig(int difficulty) {
+    var random = Random.secure();
+    var index;
+
+    print(difficulty);
+    switch (difficulty) {
+      case 100:
+        {
+          index = random.nextInt(diff1Questions.length);
+          this.question = diff1Questions[index];
+          if (index == 0) {
+            this.answers = diff1Answers;
+          } else {
+            this.answers = diff1Answers2;
+          }
+        }
+        break;
+
+      case 200:
+        {
+          index = random.nextInt(diff2Questions.length);
+          this.question = diff2Questions[index];
+          if (index == 0) {
+            this.answers = diff2Answers;
+          } else {
+            this.answers = diff2Answers2;
+          }
+        }
+        break;
+
+      case 300:
+        {
+          index = random.nextInt(diff3Questions.length);
+          this.question = diff3Questions[index];
+          if (index == 0) {
+            this.answers = diff3Answers;
+          } else {
+            this.answers = diff3Answers2;
+          }
+        }
+        break;
+
+      case 400:
+        {
+          index = random.nextInt(diff4Questions.length);
+          this.question = diff4Questions[index];
+          if (index == 0) {
+            this.answers = diff4Answers;
+          } else {
+            this.answers = diff4Answers2;
+          }
+        }
+        break;
+
+      case 500:
+        {
+          index = random.nextInt(diff5Questions.length);
+          this.question = diff5Questions[index];
+          if (index == 0) {
+            this.answers = diff5Answers;
+          } else {
+            this.answers = diff5Answers2;
+          }
+        }
+        break;
+    }
+    this.correctAnswer = correctAnswers[question];
+    this.answers.add(correctAnswer);
+  }
 }
