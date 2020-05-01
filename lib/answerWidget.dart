@@ -9,7 +9,7 @@ class AnswerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pop(context),
+      onTap: () => Navigator.pop(context, true),
       child: Card(
         child: Padding(
           padding:
