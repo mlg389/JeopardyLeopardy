@@ -1,19 +1,28 @@
 import 'dart:math';
 
 class Questions {
-  String question;
-  var answers;
-  String correctAnswer;
+  var orderedAnswers = [];
 
-  String letter;
-  bool isCorrect;
+  List generateAnswers(var answers, String correctAnswer) {
+    var tempAnswers;
 
-  void generateAnswers(String question, var answers, String correctAnswer) {
-    this.question = question;
-    this.answers = answers;
-    this.correctAnswer = correctAnswer;
+    var letter = ["a", "b", "c", "d"];
+    int randomLetter = Random().nextInt(4);
 
-    // pass into AnswerButtonWidget
+    // TODO: answers[i] will cause a problem with the T/F questions
+    int i = 0;
+    while (i < 4) {
+      if (i != randomLetter) {
+        tempAnswers = [letter[i], answers[i], false];
+        this.orderedAnswers.add(tempAnswers);
+      } else {
+        tempAnswers = [letter[i], correctAnswer, true];
+        this.orderedAnswers.add(tempAnswers);
+      }
+    }
+
+    // list of lists as: letter, answer, T/F
+    return orderedAnswers;
   }
 
   void answerResponse() {
@@ -24,6 +33,7 @@ class Questions {
 }
 
 class BestPractices extends Questions {
+  var orderedAnswersHere;
   var diff1Questions = [
     "Constraint based UI design is ideal for creation of flexible UI layouts for small and large screen sizes.",
     "An iOS mobile application developed using Flutter and tested using Android Emulator is ready to be deployed to App Store."
@@ -110,17 +120,20 @@ class BestPractices extends Questions {
   BestPractices(int difficulty) {
     var random = Random.secure();
     var index;
+    var question;
+    var answers;
+    var correctAnswer;
 
     print(difficulty);
     switch (difficulty) {
       case 100:
         {
           index = random.nextInt(diff1Questions.length);
-          this.question = diff1Questions[index];
+          question = diff1Questions[index];
           if (index == 0) {
-            this.answers = diff1Answers;
+            answers = diff1Answers;
           } else {
-            this.answers = diff1Answers2;
+            answers = diff1Answers2;
           }
         }
         break;
@@ -128,11 +141,11 @@ class BestPractices extends Questions {
       case 200:
         {
           index = random.nextInt(diff2Questions.length);
-          this.question = diff2Questions[index];
+          question = diff2Questions[index];
           if (index == 0) {
-            this.answers = diff2Answers;
+            answers = diff2Answers;
           } else {
-            this.answers = diff2Answers2;
+            answers = diff2Answers2;
           }
         }
         break;
@@ -140,11 +153,11 @@ class BestPractices extends Questions {
       case 300:
         {
           index = random.nextInt(diff3Questions.length);
-          this.question = diff3Questions[index];
+          question = diff3Questions[index];
           if (index == 0) {
-            this.answers = diff3Answers;
+            answers = diff3Answers;
           } else {
-            this.answers = diff3Answers2;
+            answers = diff3Answers2;
           }
         }
         break;
@@ -152,11 +165,11 @@ class BestPractices extends Questions {
       case 400:
         {
           index = random.nextInt(diff4Questions.length);
-          this.question = diff4Questions[index];
+          question = diff4Questions[index];
           if (index == 0) {
-            this.answers = diff4Answers;
+            answers = diff4Answers;
           } else {
-            this.answers = diff4Answers2;
+            answers = diff4Answers2;
           }
         }
         break;
@@ -164,21 +177,27 @@ class BestPractices extends Questions {
       case 500:
         {
           index = random.nextInt(diff5Questions.length);
-          this.question = diff5Questions[index];
+          question = diff5Questions[index];
           if (index == 0) {
-            this.answers = diff5Answers;
+            answers = diff5Answers;
           } else {
-            this.answers = diff5Answers2;
+            answers = diff5Answers2;
           }
         }
         break;
     }
-    this.correctAnswer = correctAnswers[question];
-    this.answers.add(correctAnswer);
+    correctAnswer = correctAnswers[question];
+    answers.add(correctAnswer);
+    orderedAnswersHere = generateAnswers(answers, correctAnswer);
+  }
+
+  List getOrderedAnswers() {
+    return this.orderedAnswersHere;
   }
 }
 
 class FlutterAppAnatomy extends Questions {
+  var orderedAnswersHere;
   var diff1Questions = [
     "Flutter takes advantage of the techniques used in ________ development to support flexible UI layout supporting various screen sizes and aspect ratios.",
     "Which one of the followings is not an advantage of Flutter platform?"
@@ -275,17 +294,20 @@ class FlutterAppAnatomy extends Questions {
   FlutterAppAnatomy(int difficulty) {
     var random = Random.secure();
     var index;
+    var question;
+    var answers;
+    var correctAnswer;
 
     print(difficulty);
     switch (difficulty) {
       case 100:
         {
           index = random.nextInt(diff1Questions.length);
-          this.question = diff1Questions[index];
+          question = diff1Questions[index];
           if (index == 0) {
-            this.answers = diff1Answers;
+            answers = diff1Answers;
           } else {
-            this.answers = diff1Answers2;
+            answers = diff1Answers2;
           }
         }
         break;
@@ -293,11 +315,11 @@ class FlutterAppAnatomy extends Questions {
       case 200:
         {
           index = random.nextInt(diff2Questions.length);
-          this.question = diff2Questions[index];
+          question = diff2Questions[index];
           if (index == 0) {
-            this.answers = diff2Answers;
+            answers = diff2Answers;
           } else {
-            this.answers = diff2Answers2;
+            answers = diff2Answers2;
           }
         }
         break;
@@ -305,11 +327,11 @@ class FlutterAppAnatomy extends Questions {
       case 300:
         {
           index = random.nextInt(diff3Questions.length);
-          this.question = diff3Questions[index];
+          question = diff3Questions[index];
           if (index == 0) {
-            this.answers = diff3Answers;
+            answers = diff3Answers;
           } else {
-            this.answers = diff3Answers2;
+            answers = diff3Answers2;
           }
         }
         break;
@@ -317,11 +339,11 @@ class FlutterAppAnatomy extends Questions {
       case 400:
         {
           index = random.nextInt(diff4Questions.length);
-          this.question = diff4Questions[index];
+          question = diff4Questions[index];
           if (index == 0) {
-            this.answers = diff4Answers;
+            answers = diff4Answers;
           } else {
-            this.answers = diff4Answers2;
+            answers = diff4Answers2;
           }
         }
         break;
@@ -329,21 +351,27 @@ class FlutterAppAnatomy extends Questions {
       case 500:
         {
           index = random.nextInt(diff5Questions.length);
-          this.question = diff5Questions[index];
+          question = diff5Questions[index];
           if (index == 0) {
-            this.answers = diff5Answers;
+            answers = diff5Answers;
           } else {
-            this.answers = diff5Answers2;
+            answers = diff5Answers2;
           }
         }
         break;
     }
-    this.correctAnswer = correctAnswers[question];
-    this.answers.add(correctAnswer);
+    correctAnswer = correctAnswers[question];
+    answers.add(correctAnswer);
+    orderedAnswersHere = generateAnswers(answers, correctAnswer);
+  }
+
+  List getOrderedAnswers() {
+    return this.orderedAnswersHere;
   }
 }
 
 class OOP extends Questions {
+  var orderedAnswersHere;
   var diff1Questions = [
     "Which concept of object-oriented programming is displayed by using the \'is a kind of\' comparison between 2 classes.",
     "Which relationship is a good candidate for superclass and subclass?"
@@ -411,17 +439,20 @@ class OOP extends Questions {
   OOP(int difficulty) {
     var random = Random.secure();
     var index;
+    var question;
+    var answers;
+    var correctAnswer;
 
     print(difficulty);
     switch (difficulty) {
       case 100:
         {
           index = random.nextInt(diff1Questions.length);
-          this.question = diff1Questions[index];
+          question = diff1Questions[index];
           if (index == 0) {
-            this.answers = diff1Answers;
+            answers = diff1Answers;
           } else {
-            this.answers = diff1Answers2;
+            answers = diff1Answers2;
           }
         }
         break;
@@ -429,11 +460,11 @@ class OOP extends Questions {
       case 200:
         {
           index = random.nextInt(diff2Questions.length);
-          this.question = diff2Questions[index];
+          question = diff2Questions[index];
           if (index == 0) {
-            this.answers = diff2Answers;
+            answers = diff2Answers;
           } else {
-            this.answers = diff2Answers2;
+            answers = diff2Answers2;
           }
         }
         break;
@@ -441,11 +472,11 @@ class OOP extends Questions {
       case 300:
         {
           index = random.nextInt(diff3Questions.length);
-          this.question = diff3Questions[index];
+          question = diff3Questions[index];
           if (index == 0) {
-            this.answers = diff3Answers;
+            answers = diff3Answers;
           } else {
-            this.answers = diff3Answers2;
+            answers = diff3Answers2;
           }
         }
         break;
@@ -453,11 +484,11 @@ class OOP extends Questions {
       case 400:
         {
           index = random.nextInt(diff4Questions.length);
-          this.question = diff4Questions[index];
+          question = diff4Questions[index];
           if (index == 0) {
-            this.answers = diff4Answers;
+            answers = diff4Answers;
           } else {
-            this.answers = diff4Answers2;
+            answers = diff4Answers2;
           }
         }
         break;
@@ -465,21 +496,27 @@ class OOP extends Questions {
       case 500:
         {
           index = random.nextInt(diff5Questions.length);
-          this.question = diff5Questions[index];
+          question = diff5Questions[index];
           if (index == 0) {
-            this.answers = diff5Answers;
+            answers = diff5Answers;
           } else {
-            this.answers = diff5Answers2;
+            answers = diff5Answers2;
           }
         }
         break;
     }
-    this.correctAnswer = correctAnswers[question];
-    this.answers.add(correctAnswer);
+    correctAnswer = correctAnswers[question];
+    answers.add(correctAnswer);
+    orderedAnswersHere = generateAnswers(answers, correctAnswer);
+  }
+
+  List getOrderedAnswers() {
+    return this.orderedAnswersHere;
   }
 }
 
-class MobileAppsHistory extends Questions {
+class ServerUsageConfiguration extends Questions {
+  var orderedAnswersHere;
   var diff1Questions = ["Which device used mobile applications first?"];
   var diff2Questions = new List(2);
   var diff3Questions = new List(2);
@@ -505,20 +542,23 @@ class MobileAppsHistory extends Questions {
   // key = question, value = correct answer
   var correctAnswers = {"Which device used mobile applications first?": "PDAs"};
 
-  MobileAppsHistory(int difficulty) {
+  ServerUsageConfiguration(int difficulty) {
     var random = Random.secure();
     var index;
+    var question;
+    var answers;
+    var correctAnswer;
 
     print(difficulty);
     switch (difficulty) {
       case 100:
         {
           index = random.nextInt(diff1Questions.length);
-          this.question = diff1Questions[index];
+          question = diff1Questions[index];
           if (index == 0) {
-            this.answers = diff1Answers;
+            answers = diff1Answers;
           } else {
-            this.answers = diff1Answers2;
+            answers = diff1Answers2;
           }
         }
         break;
@@ -526,11 +566,11 @@ class MobileAppsHistory extends Questions {
       case 200:
         {
           index = random.nextInt(diff2Questions.length);
-          this.question = diff2Questions[index];
+          question = diff2Questions[index];
           if (index == 0) {
-            this.answers = diff2Answers;
+            answers = diff2Answers;
           } else {
-            this.answers = diff2Answers2;
+            answers = diff2Answers2;
           }
         }
         break;
@@ -538,11 +578,11 @@ class MobileAppsHistory extends Questions {
       case 300:
         {
           index = random.nextInt(diff3Questions.length);
-          this.question = diff3Questions[index];
+          question = diff3Questions[index];
           if (index == 0) {
-            this.answers = diff3Answers;
+            answers = diff3Answers;
           } else {
-            this.answers = diff3Answers2;
+            answers = diff3Answers2;
           }
         }
         break;
@@ -550,11 +590,11 @@ class MobileAppsHistory extends Questions {
       case 400:
         {
           index = random.nextInt(diff4Questions.length);
-          this.question = diff4Questions[index];
+          question = diff4Questions[index];
           if (index == 0) {
-            this.answers = diff4Answers;
+            answers = diff4Answers;
           } else {
-            this.answers = diff4Answers2;
+            answers = diff4Answers2;
           }
         }
         break;
@@ -562,21 +602,27 @@ class MobileAppsHistory extends Questions {
       case 500:
         {
           index = random.nextInt(diff5Questions.length);
-          this.question = diff5Questions[index];
+          question = diff5Questions[index];
           if (index == 0) {
-            this.answers = diff5Answers;
+            answers = diff5Answers;
           } else {
-            this.answers = diff5Answers2;
+            answers = diff5Answers2;
           }
         }
         break;
     }
-    this.correctAnswer = correctAnswers[question];
-    this.answers.add(correctAnswer);
+    correctAnswer = correctAnswers[question];
+    answers.add(correctAnswer);
+    orderedAnswersHere = generateAnswers(answers, correctAnswer);
+  }
+
+  List getOrderedAnswers() {
+    return this.orderedAnswersHere;
   }
 }
 
 class ASConfig extends Questions {
+  var orderedAnswersHere;
   var diff1Questions = [
     "Versions of Android SDK are uniquely identified by:",
     "Two aspects of keeping your installed version of Android Studio up-to-date are keeping the version of Android Studio software and _______ up-to-date"
@@ -655,17 +701,20 @@ class ASConfig extends Questions {
   ASConfig(int difficulty) {
     var random = Random.secure();
     var index;
+    var question;
+    var answers;
+    var correctAnswer;
 
     print(difficulty);
     switch (difficulty) {
       case 100:
         {
           index = random.nextInt(diff1Questions.length);
-          this.question = diff1Questions[index];
+          question = diff1Questions[index];
           if (index == 0) {
-            this.answers = diff1Answers;
+            answers = diff1Answers;
           } else {
-            this.answers = diff1Answers2;
+            answers = diff1Answers2;
           }
         }
         break;
@@ -673,11 +722,11 @@ class ASConfig extends Questions {
       case 200:
         {
           index = random.nextInt(diff2Questions.length);
-          this.question = diff2Questions[index];
+          question = diff2Questions[index];
           if (index == 0) {
-            this.answers = diff2Answers;
+            answers = diff2Answers;
           } else {
-            this.answers = diff2Answers2;
+            answers = diff2Answers2;
           }
         }
         break;
@@ -685,11 +734,11 @@ class ASConfig extends Questions {
       case 300:
         {
           index = random.nextInt(diff3Questions.length);
-          this.question = diff3Questions[index];
+          question = diff3Questions[index];
           if (index == 0) {
-            this.answers = diff3Answers;
+            answers = diff3Answers;
           } else {
-            this.answers = diff3Answers2;
+            answers = diff3Answers2;
           }
         }
         break;
@@ -697,11 +746,11 @@ class ASConfig extends Questions {
       case 400:
         {
           index = random.nextInt(diff4Questions.length);
-          this.question = diff4Questions[index];
+          question = diff4Questions[index];
           if (index == 0) {
-            this.answers = diff4Answers;
+            answers = diff4Answers;
           } else {
-            this.answers = diff4Answers2;
+            answers = diff4Answers2;
           }
         }
         break;
@@ -709,16 +758,21 @@ class ASConfig extends Questions {
       case 500:
         {
           index = random.nextInt(diff5Questions.length);
-          this.question = diff5Questions[index];
+          question = diff5Questions[index];
           if (index == 0) {
-            this.answers = diff5Answers;
+            answers = diff5Answers;
           } else {
-            this.answers = diff5Answers2;
+            answers = diff5Answers2;
           }
         }
         break;
     }
-    this.correctAnswer = correctAnswers[question];
-    this.answers.add(correctAnswer);
+    correctAnswer = correctAnswers[question];
+    answers.add(correctAnswer);
+    orderedAnswersHere = generateAnswers(answers, correctAnswer);
+  }
+
+  List getOrderedAnswers() {
+    return this.orderedAnswersHere;
   }
 }

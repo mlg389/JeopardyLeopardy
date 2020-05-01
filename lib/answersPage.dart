@@ -29,7 +29,7 @@ class AnswersPage extends StatelessWidget {
       return q;
     }
     if (this.topic == 'Mobile Apps History') {
-      Questions q = new MobileAppsHistory(this.difficulty);
+      Questions q = new ServerUsageConfiguration(this.difficulty);
       return q;
     }
     if (this.topic == 'O.O.P.') {
