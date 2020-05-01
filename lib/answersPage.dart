@@ -36,9 +36,9 @@ class _AnswersPageState extends State<AnswersPage> {
         }
         break;
 
-      case "Mobile Apps History":
+      case "Server Usage Configuration":
         {
-          MobileAppsHistory(widget.difficulty);
+          ServerUsageConfiguration(widget.difficulty);
         }
         break;
 

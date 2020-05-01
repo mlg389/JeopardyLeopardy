@@ -357,7 +357,7 @@ class OOP extends Questions {
   }
 }
 
-class MobileAppsHistory extends Questions {
+class ServerUsageConfiguration extends Questions {
   var diff1Questions = ["Which device used mobile applications first?"];
   var diff2Questions = new List(2);
   var diff3Questions = new List(2);
@@ -383,7 +383,7 @@ class MobileAppsHistory extends Questions {
   // key = question, value = correct answer
   var correctAnswers = {"Which device used mobile applications first?": "PDAs"};
 
-  MobileAppsHistory(int difficulty) {
+  ServerUsageConfiguration(int difficulty) {
     // start choosing things based on difficulty
   }
 }
