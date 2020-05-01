@@ -15,7 +15,7 @@ class QuestionsPage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Column(children: <Widget>[
-                TopicsWidget(topic: 'Best \nPractices'),
+                TopicsWidget(topic: 'Best \nPractices', fontSize: 12),
                 GameTileWidget(price: 100, topicTitle: 'Best Practices'),
                 GameTileWidget(price: 200, topicTitle: 'Best Practices'),
                 GameTileWidget(price: 300, topicTitle: 'Best Practices'),
@@ -25,7 +25,7 @@ class QuestionsPage extends StatelessWidget {
             ),
             Expanded(
               child: Column(children: <Widget>[
-                TopicsWidget(topic: 'Flutter App \nAnatomy'),
+                TopicsWidget(topic: 'Flutter App \nAnatomy', fontSize: 10),
                 GameTileWidget(price: 100, topicTitle: 'Flutter App Anatomy'),
                 GameTileWidget(price: 200, topicTitle: 'Flutter App Anatomy'),
                 GameTileWidget(price: 300, topicTitle: 'Flutter App Anatomy'),
@@ -35,7 +35,7 @@ class QuestionsPage extends StatelessWidget {
             ),
             Expanded(
               child: Column(children: <Widget>[
-                TopicsWidget(topic: 'O.O.P.'),
+                TopicsWidget(topic: 'O.O.P.', fontSize: 20),
                 GameTileWidget(price: 100, topicTitle: 'O.O.P.'),
                 GameTileWidget(price: 200, topicTitle: 'O.O.P.'),
                 GameTileWidget(price: 300, topicTitle: 'O.O.P.'),
@@ -45,7 +45,7 @@ class QuestionsPage extends StatelessWidget {
             ),
             Expanded(
               child: Column(children: <Widget>[
-                TopicsWidget(topic: 'Mobile Apps \nHistory'),
+                TopicsWidget(topic: 'Mobile Apps \nHistory', fontSize: 10),
                 GameTileWidget(price: 100, topicTitle: 'Mobile Apps History'),
                 GameTileWidget(price: 200, topicTitle: 'Mobile Apps History'),
                 GameTileWidget(price: 300, topicTitle: 'Mobile Apps History'),
