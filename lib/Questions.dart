@@ -33,6 +33,7 @@ class Questions {
 }
 
 class BestPractices extends Questions {
+  var orderedAnswersHere;
   var diff1Questions = [
     "Constraint based UI design is ideal for creation of flexible UI layouts for small and large screen sizes.",
     "An iOS mobile application developed using Flutter and tested using Android Emulator is ready to be deployed to App Store."
@@ -117,7 +118,73 @@ class BestPractices extends Questions {
   };
 
   BestPractices(int difficulty) {
+    int randomQuestion = Random().nextInt(2);
+    var question;
+    var answers;
+    var correctAnswer;
     // start choosing things based on difficulty
+    switch (difficulty) {
+      case 100:
+        {
+          if (randomQuestion == 0) {
+            answers = diff1Answers;
+          } else {
+            answers = diff1Answers2;
+          }
+          question = diff1Questions[randomQuestion];
+          correctAnswer = correctAnswers[question];
+        }
+        break;
+      case 200:
+        {
+          if (randomQuestion == 0) {
+            answers = diff2Answers;
+          } else {
+            answers = diff2Answers2;
+          }
+          question = diff2Questions[randomQuestion];
+          correctAnswer = correctAnswers[question];
+        }
+        break;
+      case 300:
+        {
+          if (randomQuestion == 0) {
+            answers = diff3Answers;
+          } else {
+            answers = diff3Answers2;
+          }
+          question = diff3Questions[randomQuestion];
+          correctAnswer = correctAnswers[question];
+        }
+        break;
+      case 400:
+        {
+          if (randomQuestion == 0) {
+            answers = diff4Answers;
+          } else {
+            answers = diff4Answers2;
+          }
+          question = diff4Questions[randomQuestion];
+          correctAnswer = correctAnswers[question];
+        }
+        break;
+      case 500:
+        {
+          if (randomQuestion == 0) {
+            answers = diff5Answers;
+          } else {
+            answers = diff5Answers2;
+          }
+          question = diff5Questions[randomQuestion];
+          correctAnswer = correctAnswers[question];
+        }
+        break;
+    }
+    orderedAnswersHere = generateAnswers(answers, correctAnswer);
+  }
+
+  List getOrderedAnswers() {
+    return orderedAnswersHere;
   }
 }
 
