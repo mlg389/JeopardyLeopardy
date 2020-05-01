@@ -1,17 +1,28 @@
+import 'dart:math';
+
 class Questions {
-  String question;
-  var answers;
-  String correctAnswer;
+  var orderedAnswers = [];
 
-  String letter;
-  bool isCorrect;
+  List generateAnswers(var answers, String correctAnswer) {
+    var tempAnswers;
 
-  void generateAnswers(String question, var answers, String correctAnswer) {
-    this.question = question;
-    this.answers = answers;
-    this.correctAnswer = correctAnswer;
+    var letter = ["a", "b", "c", "d"];
+    int randomLetter = Random().nextInt(4);
 
-    // pass into AnswerButtonWidget
+    // TODO: answers[i] will cause a problem with the T/F questions
+    int i = 0;
+    while (i < 4) {
+      if (i != randomLetter) {
+        tempAnswers = [letter[i], answers[i], false];
+        this.orderedAnswers.add(tempAnswers);
+      } else {
+        tempAnswers = [letter[i], correctAnswer, true];
+        this.orderedAnswers.add(tempAnswers);
+      }
+    }
+
+    // list of lists as: letter, answer, T/F
+    return orderedAnswers;
   }
 
   void answerResponse() {
