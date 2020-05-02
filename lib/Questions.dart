@@ -492,30 +492,76 @@ class OOP extends Questions {
 }
 
 class ServerUsageConfiguration extends Questions {
-  var diff1Questions = ["Which device used mobile applications first?"];
-  var diff2Questions = new List(2);
-  var diff3Questions = new List(2);
-  var diff4Questions = new List(2);
-  var diff5Questions = new List(2);
+  var diff1Questions = [
+    "Both iOS and Android require the user permission to allow GEOLocator access the location of the mobile device.",
+    "Each try clause always has an associated catch clause."
+
+  ];
+  var diff2Questions = [
+    "To be able to get live weather data from the OpenWeatherMap Weather API you need to sign up for an account and get an API Key.",
+    "What is http.get() used for?"
+  ];
+  var diff3Questions = [
+    "What is the outcome of the call below if the mobile app user denies permission access to its location?. \nGeolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.low);",
+    "What is http.response() used for?"
+  ];
+  var diff4Questions = [
+    "An API provider may provide information in ________________________ format",
+    "Which package provides a spinner widget to show the user while waiting for reponse."
+  ];
+  var diff5Questions = [
+    "Which package do you need to install for your application to use Firebase for storing data and user authentication and registration?",
+    "To use the Firebase authentication package,you need to :"
+  ];
 
   // list wrong answers for the questions
-  var diff1Answers = ["Phones", "Pagers", "TVs"];
-  var diff1Answers2 = new List(8);
+  var diff1Answers = ["False"];
+  var diff1Answers2 = ["False"];
 
-  var diff2Answers = new List(8);
-  var diff2Answers2 = new List(8);
+  var diff2Answers = ["True"];
+  var diff2Answers2 =["Grabs a response from an http server.", "Sorts an http response into a usable format.", "Process a server request into a human reable version."];
 
-  var diff3Answers = new List(8);
-  var diff3Answers2 = new List(8);
+  var diff3Answers = [
+  "A null value will be returned to the Flutter application making the call.",
+  "The call will return the location. The Flutter App making the call may choose to throw an exception.",
+  "The call will return false."
+  ];
+  var diff3Answers2 = ["Requesting information from a server.", "Formating a GET request to the server." "Accessing server logs for maintence."];
 
-  var diff4Answers = new List(8);
-  var diff4Answers2 = new List(8);
+  var diff4Answers = ["JSON", "XML"];
+  var diff4Answers2 = ["cupertino_icons", "geolocator", "None of the options is correct"];
 
-  var diff5Answers = new List(8);
-  var diff5Answers2 = new List(8);
+  var diff5Answers = [
+    "firebase_auth", "firebase_core",  "cloud_firestore"
+  ];
+  var diff5Answers2 = [
+    "Log in and register with Firebase", "Implement a try and catch making sure the package is not decrepated", "Import ‘package:firebase_core/firebase_core.dart’"
+  ];
 
   // key = question, value = correct answer
-  var correctAnswers = {"Which device used mobile applications first?": "PDAs"};
+  var correctAnswers = {
+      "An API provider may provide information in ________________________ format":
+        "Both options are possible.",
+      "Which package provides a spinner widget to show the user while waiting for reponse.":
+          "flutter_spinkit",
+      "What is the outcome of the call below if the mobile app user denies permission access to its location?. \nGeolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.low);":
+        "The call will throw an exception.",
+    "To be able to get live weather data from the OpenWeatherMap Weather API you need to sign up for an account and get an API Key.":
+        "False",
+    "Both iOS and Android require the user permission to allow GEOLocator access the location of the mobile device.":
+        "True",
+    "Each try clause always has an associated catch clause.":
+        "True",
+    "Which package do you need to install for your application to use Firebase for storing data and user authentication and registration?":
+        "All of these answers are correct.",
+    "To use the Firebase authentication package,you need to :" :
+        "Import ‘package:firebase_auth/firebase_auth.dart’",
+    "What is http.get() used for?":
+        "Sends a GET request with the given headers to the URL",
+    "What is http.response() used for?":
+      "Creating a new HTTP response with a string body."
+
+};
 
   ServerUsageConfiguration(int difficulty) {
     var random = Random.secure();
@@ -597,11 +643,12 @@ class ASConfig extends Questions {
     "This Android Studio tool provides a tree structure of the entire application code base, available during development time."
   ];
   var diff3Questions = [
-    "This Android Studio platform feature  allows to automatically wrap a Flutter widget around another widget in Dart code."
-        "What can you use to simulate a flutter project?"
+    "This Android Studio platform feature  allows to automatically wrap a Flutter widget around another widget in Dart code.",
+    "How can you run Dart Analyzer from the command line?"
   ];
   var diff4Questions = [
-    "Which of the followings is a way to include app icons for iOS and Adroid mobile applications for a Flutter project in Android Studio."
+    "Which of the followings is a way to include app icons for iOS and Android mobile applications for a Flutter project in Android Studio.",
+    "What does enabling asserts do in flutter debbuging?"
   ];
   var diff5Questions = [
     "To use this Android Studio tool your application must be running on a emulator, simulator or a physical device.",
@@ -628,14 +675,18 @@ class ASConfig extends Questions {
   ];
 
   var diff3Answers = ["Auto code generation", "Auto format", "Dart Analyzer"];
-  var diff3Answers2 = [];
+  var diff3Answers2 = ["flutter dart analyzer", "flutter dart", "analyze"];
 
   var diff4Answers = [
     "use Android Studio image asset configuration wizard",
     "use appicon.cp website",
     "None of these options"
   ];
-  var diff4Answers2 = [];
+  var diff4Answers2 = [
+    "Allow returning of higher priority errors in a program.",
+    "Allows forcibly stopping a program when a try - catch fails",
+    "Allows asserting the runtime of a program to make system allowances of memory."
+  ];
 
   var diff5Answers = [
     "Flutter Outline Tab",
@@ -661,7 +712,11 @@ class ASConfig extends Questions {
     "To use this Android Studio tool your application must be running on a emulator, simulator or a physical device.":
         "Flutter Inspector Tab",
     "This feature of the Android Studio helps breakdown a large project to smaller more manageable parts during implementation and coding.":
-        "The //TODO: Comment"
+        "The //TODO: Comment",
+    "How can you run Dart Analyzer from the command line?":
+        "flutter analyze",
+    "What does enabling asserts do in flutter debbuging?":
+        "Allow testing expected values and erroring out if values do not exist."
   };
   ASConfig(int difficulty) {
     var random = Random.secure();
