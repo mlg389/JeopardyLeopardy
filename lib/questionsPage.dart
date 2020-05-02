@@ -46,12 +46,12 @@ class QuestionsPage extends StatelessWidget {
           ),
           Expanded(
             child: Column(children: <Widget>[
-              TopicsWidget(topic: 'Mobile Apps \nHistory', fontSize: 10),
-              GameTileWidget(price: 100, topicTitle: 'Mobile Apps History'),
-              GameTileWidget(price: 200, topicTitle: 'Mobile Apps History'),
-              GameTileWidget(price: 300, topicTitle: 'Mobile Apps History'),
-              GameTileWidget(price: 400, topicTitle: 'Mobile Apps History'),
-              GameTileWidget(price: 500, topicTitle: 'Mobile Apps History'),
+              TopicsWidget(topic: 'Server Config', fontSize: 10),
+              GameTileWidget(price: 100, topicTitle: 'Server Config'),
+              GameTileWidget(price: 200, topicTitle: 'Server Config'),
+              GameTileWidget(price: 300, topicTitle: 'Server Config'),
+              GameTileWidget(price: 400, topicTitle: 'Server Config'),
+              GameTileWidget(price: 500, topicTitle: 'Server Config'),
             ]),
           ),
           Expanded(

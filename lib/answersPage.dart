@@ -29,7 +29,7 @@ class AnswersPage extends StatelessWidget {
       Questions q = new FlutterAppAnatomy(this.difficulty);
       return q;
     }
-    if (this.topic == 'Mobile Apps History') {
+    if (this.topic == 'Server Config') {
       Questions q = new ServerUsageConfiguration(this.difficulty);
       return q;
     }
