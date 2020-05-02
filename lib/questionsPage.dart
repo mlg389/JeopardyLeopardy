@@ -4,6 +4,8 @@ import 'TopicsWidget.dart';
 
 //                Best Practices, Anatomy of a Flutter App, Object Oriented Programming, History of Mobile Apps, and Android Studio Configuration
 class QuestionsPage extends StatelessWidget {
+  int score = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -48,9 +48,12 @@ class AnswersPage extends StatelessWidget {
     List<Widget> list = new List<Widget>();
     list.add(new TopicsWidget(topic: getQuestion().question, fontSize: 20));
 
-    for (var i = 0; i < question.answers.length; i++) {
+    var answersList = question.answers.toList();
+    answersList.shuffle();
+
+    for (var i = 0; i < answersList.length; i++) {
       list.add(new AnswerWidget(
-          answer: question.answers[i], isLastQuestion: this.isLastQuestion));
+          answer: answersList[i], isLastQuestion: this.isLastQuestion));
     }
     return new Column(children: list);
   }

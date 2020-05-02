@@ -29,11 +29,9 @@ class AnswerWidget extends StatelessWidget {
 
   void answerSelected(BuildContext context) {
     if (isLastQuestion) {
-      print("hit");
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => EndScreen(score: 0)));
     } else {
-      print("not hit");
       Navigator.pop(context, true);
     }
   }
