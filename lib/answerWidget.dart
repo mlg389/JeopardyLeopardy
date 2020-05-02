@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'endScreenPage.dart';
 
 class AnswerWidget extends StatelessWidget {
-  AnswerWidget({this.answer, this.isTrue});
+  AnswerWidget({this.answer, this.isTrue, this.isLastQuestion});
 
+  final bool isLastQuestion;
   final String answer;
   final bool isTrue;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pop(context, true),
+      onTap: () => answerSelected(context),
       child: Card(
         child: Padding(
           padding:
@@ -23,5 +25,16 @@ class AnswerWidget extends StatelessWidget {
         color: Colors.yellow,
       ),
     );
+  }
+
+  void answerSelected(BuildContext context) {
+    if (isLastQuestion) {
+      print("hit");
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => EndScreen(score: 0)));
+    } else {
+      print("not hit");
+      Navigator.pop(context, true);
+    }
   }
 }

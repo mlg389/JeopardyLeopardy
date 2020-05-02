@@ -15,17 +15,33 @@ class _GameTileState extends State<GameTileWidget> {
   _GameTileState({this.price, this.topicTitle});
   final int price;
   final String topicTitle;
+  static int tilesLeft = 25;
   bool _beenClicked = false;
   Color _cardColor = Colors.yellow;
 
   void _pressed() {
     setState(() {
+      print(tilesLeft);
       if (!_beenClicked) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    AnswersPage(difficulty: price, topic: topicTitle)));
+        tilesLeft--;
+        if (tilesLeft <= 1) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AnswersPage(
+                      difficulty: price,
+                      topic: topicTitle,
+                      isLastQuestion: true)));
+          tilesLeft = 25;
+        } else {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AnswersPage(
+                      difficulty: price,
+                      topic: topicTitle,
+                      isLastQuestion: false)));
+        }
       }
       _beenClicked = true;
       _cardColor = Colors.black12;

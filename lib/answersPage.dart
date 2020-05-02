@@ -6,7 +6,8 @@ import 'TopicsWidget.dart';
 class AnswersPage extends StatelessWidget {
   final int difficulty;
   final String topic;
-  AnswersPage({@required this.difficulty, this.topic});
+  final bool isLastQuestion;
+  AnswersPage({@required this.difficulty, this.topic, this.isLastQuestion});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,8 @@ class AnswersPage extends StatelessWidget {
     list.add(new TopicsWidget(topic: getQuestion().question, fontSize: 20));
 
     for (var i = 0; i < question.answers.length; i++) {
-      list.add(new AnswerWidget(answer: question.answers[i]));
+      list.add(new AnswerWidget(
+          answer: question.answers[i], isLastQuestion: this.isLastQuestion));
     }
     return new Column(children: list);
   }

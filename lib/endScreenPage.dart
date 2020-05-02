@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
-class QuestionsPage extends StatelessWidget {
-  QuestionsPage({Key key, this.score}) : super(key: key);
+class EndScreen extends StatelessWidget {
+  EndScreen({Key key, this.score}) : super(key: key);
   final int score;
 
   @override
@@ -15,8 +16,8 @@ class QuestionsPage extends StatelessWidget {
               child: Text("Final Score:\n" + score.toString()),
             ),
             GestureDetector(
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => QuestionsPage())),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyApp())),
               child: Card(
                 child: Padding(
                   padding: const EdgeInsets.all(10),
